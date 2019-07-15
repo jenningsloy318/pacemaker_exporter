@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:    pacemaker_exporter
-Version: 0.10.0
+Version: 0.0.1
 Release: 1%{?dist}
 Summary: Prometheus bigip exporter.
 License: MIT
