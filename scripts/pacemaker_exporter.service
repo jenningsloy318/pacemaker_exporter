@@ -1,0 +1,13 @@
+[Unit]
+Description=pacemaker exporter
+Documentation=https://github.com/mjtrangoni/pacemaker_exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+MemoryLimit=2G
+ExecStart=/usr/bin/pacemaker_exporter 
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

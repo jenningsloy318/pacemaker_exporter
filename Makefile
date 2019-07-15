@@ -19,8 +19,8 @@ GOLINTER                ?= $(GOPATH)/bin/gometalinter
 pkgs                    = $(shell $(GO) list ./... | grep -v /vendor/)
 TARGET                  ?= pacemaker_exporter
 
-PREFIX                  ?= $(shell pwd)
-BIN_DIR                 ?= $(shell pwd)
+PREFIX                  ?= $(shell pwd)/build
+BIN_DIR                 ?= $(shell pwd)/build
 
 all: depcheck format vet gometalinter build test
 
@@ -37,9 +37,13 @@ gometalinter: $(GOLINTER)
 	@$(GOLINTER) --install > /dev/null
 	@$(GOLINTER) --config=./.gometalinter.json ./...
 
-build: $(PROMU) depcheck
+build: $(PROMU) 
 	@echo ">> building binaries"
 	@$(PROMU) build --prefix $(PREFIX)
+
+rpm: | $(PROMU) build
+	@echo ">> building binaries"
+	./scripts/build_rpm.sh
 
 clean:
 	@echo ">> Cleaning up"
