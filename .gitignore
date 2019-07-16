@@ -19,3 +19,4 @@ pacemaker_exporter
 
 # Vendoring directory
 vendor/
+build/
