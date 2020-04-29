@@ -1,5 +1,12 @@
 %define debug_package %{nil}
 
+
+# distribution specific definitions
+%if 0%{?sle_version} 
+%define dist .%{sle_version} 
+%endif 
+
+
 Name:    pacemaker_exporter
 Version: 0.0.1
 Release: 1%{?dist}
@@ -10,8 +17,6 @@ Source0: %{name}
 Source1: %{name}.service
 
 
-# distribution specific definitions
-%define use_systemd ((0%{?rhel} && 0%{?rhel} >= 7) || (0%{?suse_version} == 1315)
 
 
 %if 0%{?rhel} == 7

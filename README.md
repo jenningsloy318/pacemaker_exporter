@@ -28,6 +28,7 @@ $ make
 $ ./pacemaker_exporter <flags>
 ```
 Note: Please run it as *root* user, otherwise `crm_mon` will be failing.
+Alternatively, add user you run it as into haclient group.
 
 ## Endpoints
 
@@ -37,7 +38,7 @@ Note: Please run it as *root* user, otherwise `crm_mon` will be failing.
 
 ## What's exported?
 
-This exporter run `crm_mon -X`, and parse its XML output.
+This exporter run `crm_mon -Xr`, and parse its XML output.
 
 |   XML element    |     Status      | Default |
 |:----------------:|:---------------:| :------:|
@@ -48,7 +49,7 @@ This exporter run `crm_mon -X`, and parse its XML output.
 | resources        | implemented     | enabled |
 | resources/bundle | not implemented |         |
 | resources/group  | implemented     | enabled |
-| resources/clone  | not implemented |         |
+| resources/clone  | implemented     | enabled |
 | tickets          | not implemented |         |
 | bans             | implemented     | enabled |
 | failures         | implemented     | enabled |
